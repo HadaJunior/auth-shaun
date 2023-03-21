@@ -14,14 +14,14 @@ form.addEventListener('submit', async (e) => {
     const password = form.password.value;
 
     try {
-        const res = await fetch('/smoothies/signup', {
+        const res = await fetch('/smoothies/login', {
             method: 'POST',
             body: JSON.stringify({email, password}),
             headers: { 'Content-Type': 'application/json' }
         });
 
         const data = await res.json();
-        
+
         if(data.errors){
             emailError.textContent = data.errors.email;
             passwordError.textContent = data.errors.password;
@@ -30,6 +30,7 @@ form.addEventListener('submit', async (e) => {
         if(data.user){
             location.assign('/');
         }
+
     } catch (error) {
         console.log(error);
     }

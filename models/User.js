@@ -26,7 +26,20 @@ userSchema.pre('save', async function(next){
     next();
 });
 
-//use the schema inside a model
+//login an user via a static method
+userSchema.static('login', async function(email, password){
+    const user = await this.findOne({ email });
+
+    if(user){
+        const auth = await bcrypt.compare(password, user.password);
+        if(auth){
+            return user;
+        }
+        throw Error('Incorrect password');
+    }
+    throw Error('This email is not registered');
+});
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
