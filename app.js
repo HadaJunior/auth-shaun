@@ -16,9 +16,9 @@ app.use(cookieParser());
 app.set('view engine', 'ejs');
 
 // database connection
-// const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@mongodb-demo.xjcty6t.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@mongodb-demo.xjcty6t.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 
-const dbURI = 'mongodb://127.0.0.1:27017/userAuthShaun?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0';
+// const dbURI = 'mongodb://127.0.0.1:27017/userAuthShaun?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0';
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
   .then((result) => app.listen(3000))
