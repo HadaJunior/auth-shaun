@@ -21,7 +21,7 @@ const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWOR
 // const dbURI = 'mongodb://127.0.0.1:27017/userAuthShaun?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0';
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
-  .then((result) => app.listen(3000))
+  .then((result) => app.listen(3000 || process.env.PORT))
   .catch((err) => console.log(err));
 
 // routes
